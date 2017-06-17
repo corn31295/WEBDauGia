@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using T2P_Project.Helpers
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -49,12 +51,6 @@
 
     <link href="~/assets/css/colour-blue.css" rel="stylesheet" />
 
-    <!-- =======================================================
-      Theme Name: Flexor
-      Theme URL: https://bootstrapmade.com/flexor-free-multipurpose-bootstrap-template/
-      Author: BootstrapMade.com
-      Author URL: https://bootstrapmade.com
-    ======================================================= -->
     @RenderSection("css", false)
 </head>
 
@@ -70,7 +66,7 @@
                     <div class="row">
                         <div class="col-md-8">
                             <!--navbar-branding/logo - hidden image tag & site name so things like Facebook to pick up, actual logo set via CSS for flexibility -->
-                            <a class="navbar-brand" href="#" title="Home">
+                            <a class="navbar-brand" href="@Url.Action("Index","Home")" title="Home">
                                 <h1 class="hidden">
                                     <img src="img/logo.png" alt="Flexor Logo">
                                     Flexor
@@ -86,14 +82,30 @@
                         <div class="col-md-4">
                             <!--user menu-->
                             <ul class="list-inline user-menu pull-right">
-                                <li class="hidden-xs"><i class="fa fa-edit text-primary"></i> <a href="register.html" class="text-uppercase">Register</a></li>
-                                <li class="hidden-xs"><i class="fa fa-sign-in text-primary"></i> <a href="login.html" class="text-uppercase">Login</a></li>
-                                
+                                @if (CurrentContext.IsLogged() == false) { 
+                                <li class="hidden-xs"><i class="fa fa-edit text-primary"></i> <a href="#" class="text-uppercase">Register</a></li>
+                                <li class="hidden-xs"><i class="fa fa-sign-in text-primary"></i> <a href="@Url.Action("login","Account")" class="text-uppercase">Login</a></li>
+                                }
+                                else
+                                {
+                                    <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="separator" >
+                                   @CurrentContext.GetCurUser().UserName <span class="caret"></span>
+                                    </a>
+                                        <ul class="dropdown-menu" style="background-color:black" >
+                                            <li><a href="#" class="menu-item">Personal Information</a></li>
+                                            <li class="divider"></li>
+                                            <li><a id="logoutLink" href="javascript:;" class="menu-item">Exit</a></li>
+                                            
+                                        </ul>
+                                </li>
+                                }
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
+            <form id="frmLogout" method="post" action="@Url.Action("Logout","Account")"></form>
             <div class="container">
                 <div class="navbar navbar-default">
                     <!--mobile collapse menu button-->
@@ -777,7 +789,11 @@
     <!--Custom scripts demo background & colour switcher - OPTIONAL -->
 
     <script src="~/assets/js/color-switcher.js"></script>
-
-    @RenderSection("js", false)
+    <script type="text/javascript">
+        $('#logoutLink').on('click', function () {
+            $('#frmLogout').submit();
+        });
+            </script>
+    @RenderSection("js",false)
 </body>
 </html>

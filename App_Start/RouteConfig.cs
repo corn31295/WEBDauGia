@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace T2P_Project
+namespace TEAMT2P
 {
     public class RouteConfig
     {

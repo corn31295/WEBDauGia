@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("T2P_Project")]
+[assembly: AssemblyTitle("TEAMT2P")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("T2P_Project")]
+[assembly: AssemblyProduct("TEAMT2P")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("5954e013-970a-47b1-b8b4-58e784a6a973")]
+[assembly: Guid("ac1b1733-fbb9-462b-af7c-4706a04f9f24")]
 
 // Version information for an assembly consists of the following four values:
 //

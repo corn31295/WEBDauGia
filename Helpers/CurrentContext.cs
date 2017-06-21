@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using T2P_Project.Models;
+using TEAMT2P.Models;
 
-namespace T2P_Project.Helpers
+namespace TEAMT2P.Helpers
 {
     public class CurrentContext
     {
@@ -17,7 +17,8 @@ namespace T2P_Project.Helpers
             }
             return true;
         }
-        public static User GetCurUser(){
+        public static User GetCurUser()
+        {
             return (User)HttpContext.Current.Session["user"];
         }
 

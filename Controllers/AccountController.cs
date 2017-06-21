@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using T2P_Project.Models;
-using T2P_Project.Helpers;
-namespace T2P_Project.Controllers
+using TEAMT2P.Helpers;
+using TEAMT2P.Models;
+namespace TEAMT2P.Controllers
 {
     public class AccountController : Controller
     {
@@ -19,15 +19,16 @@ namespace T2P_Project.Controllers
         //
         // POST: /Account/Login
         [HttpPost]
-        public ActionResult Login(Login1 model)
+        public ActionResult Login(LoginVM model)
         {
-
-            using (var ctx = new T2PEntities())
+    
+            using (var ctx = new QLBHEntities())
             {
+                
                 var user = ctx.Users
-                    .Where(u => u.UserName == model.UserName && u.Password == model.Password)
+                    .Where(u => u.f_Username == model.Username && u.f_Password == model.RawPWD)
                     .FirstOrDefault();
-                if  (user != null)
+                if (user != null)
                 {
                     Session["isLogin"] = 1;
                     Session["user"] = user;
@@ -36,9 +37,9 @@ namespace T2P_Project.Controllers
                 else
                 {
                     ViewBag.ErrorMsg = "Fail to login!!!";
-                    return View(); 
+                    return View();
                 }
-            } 
+            }
         }
 
         //
@@ -53,5 +54,5 @@ namespace T2P_Project.Controllers
         //{
         //    return View();
         //}
-	}
+    }
 }

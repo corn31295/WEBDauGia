@@ -4,15 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace T2P_Project.Controllers
+namespace TEAMT2P.Controllers
 {
     public class HomeController : Controller
     {
-        //
-        // GET: /Home/
+        // GET: Home
         public ActionResult Index()
         {
             return View();
         }
-	}
+    }
 }
